@@ -46,6 +46,27 @@
       <section class="result">
         <output id="test-output"></output>
       </section>
+
+      <section class="examples">
+        <h2>Some basic examples</h2>
+        <ul class="example-list">
+          <li data-example-string="aaaaaaaaaaaaaaaaaaaaaaaa!">(a+)+b</li>
+          <li data-example-string="aaaaaaaaaaaaaaaaaaaaaaaa!">([a-zA-Z]+)*b</li>
+          <li data-example-string="aaaaaaaaaaaaaaaaaaaaaaaa!">(a|aa)+b</li>
+          <li data-example-string="aaaaaaaaaaaaaaaaaaaaaaaa!">(a|a?)+b</li>
+          <li data-example-string="aaaaaaaaaaaaaaaaaaaaaaaa!">(.*a){12}b</li>
+        </ul>
+
+        <h2>Some real life examples</h2>
+
+        <ul class="example-list">
+          <li
+            data-example-string="@............................travelersinsurance!"
+          >
+            @(.*?\.)+([a-z]{2,18})$
+          </li>
+        </ul>
+      </section>
     </main>
     <footer>
       <section>
