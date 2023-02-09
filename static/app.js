@@ -66,7 +66,6 @@ function unsuccessfulMatch(event) {
   clearInterval(interval);
   stopButton.remove();
   stopButton = createButton();
-  console.log(event);
   testOutput.innerText = `The test failed with the message "${
     event.message
   }", and it took ${Math.round(performance.now() - start)}ms`;
@@ -86,14 +85,13 @@ function testRegexAgainstString(testRegex, testString) {
 
 function turnExamplesIntoButtons() {
   const listItems = document.querySelectorAll(".example-list li");
-  console.log(listItems);
   Array.from(listItems).forEach((listItem) => {
     const button = createButton(listItem.textContent);
     button.addEventListener(
       "click",
       fillFormWithExample(
-        listItem.textContent,
-        listItem.dataset["exampleString"]
+        listItem.textContent.trim(),
+        listItem.dataset["exampleString"].trim()
       )
     );
     listItem.innerHTML = "";
