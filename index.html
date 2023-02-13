@@ -10,7 +10,7 @@
   <body>
     <header>
       <section>
-        <h1>Regex Timer</h1>
+        <h1>RegExp Timer</h1>
       </section>
     </header>
     <main>
@@ -31,7 +31,7 @@
       <section class="test">
         <form id="regex-tester">
           <div>
-            <label for="regex">Regular Expression</label>
+            <label for="regex">Regular Expression:&nbsp;&nbsp;</label>
             <input
               id="regex"
               type="text"
@@ -41,7 +41,7 @@
             />
           </div>
           <div>
-            <label for="test-string">Test string</label>
+            <label for="test-string">Test string:&nbsp;&nbsp;</label>
             <input
               id="test-string"
               type="text"
@@ -51,16 +51,20 @@
             />
           </div>
           <div>
-            <button id="test-button">Test</button>
+            <button id="test-button" type="submit">Test</button>
           </div>
         </form>
       </section>
       <section class="result">
-        <output id="test-output"></output>
+        <div>
+          <p><kbd id="test-input"></kbd></p>
+          <output id="test-output" for="regex test-string">&gt;&gt;</output>
+        </div>
       </section>
 
       <section class="examples">
         <h2>Some basic examples</h2>
+        <p>Click the example to load it up for testing.</p>
         <ul class="example-list">
           <li data-example-string="aaaaaaaaaaaaaaaaaaaaaaaa!">(a+)+b</li>
           <li data-example-string="aaaaaaaaaaaaaaaaaaaaaaaa!">([a-zA-Z]+)*b</li>
@@ -70,7 +74,7 @@
         </ul>
 
         <h2>Some real life examples</h2>
-
+        <p>Click the example to load it up for testing.</p>
         <ul class="example-list">
           <li
             data-example-string="@............................travelersinsurance!"

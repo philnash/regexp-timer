@@ -32,11 +32,24 @@ body {
 body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  background: #1a2a6c; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    315deg,
+    #fdbb2d,
+    #b21f1f,
+    #1a2a6c
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    315deg,
+    #fdbb2d,
+    #b21f1f,
+    #1a2a6c
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
   /* layout */
   display: flex;
   flex-direction: column;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 20px;
 }
 /*
   6. Improve media defaults
@@ -83,16 +96,111 @@ footer > section {
 
 header {
   padding: 2em;
+  background-color: #f8f8f8;
+  margin-bottom: 20px;
+  border-radius: 6px;
 }
 header h1 {
-  font-size: 2em;
+  font-size: 3em;
   text-align: center;
+  font-family: "Courier New", monospace;
+  font-weight: 900;
 }
 
 main {
   flex-grow: 1;
+  background-color: #f8f8f8;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 6px;
 }
 
-section.intro {
+section.intro,
+section.test,
+section.result {
   margin-bottom: 2em;
+}
+
+section.test form {
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+
+section.test form > div {
+  margin-bottom: 1em;
+}
+
+section.test form input {
+  display: block;
+  flex-grow: 1;
+  width: 100%;
+  background-color: #0a0a0a;
+  font-family: "Courier New", Courier, monospace;
+  color: #f8f8f8;
+  border: none;
+  padding: 0.5em 1em;
+  border-radius: 6px;
+}
+
+@media (min-width: 500px) {
+  section.test form > div {
+    display: flex;
+  }
+  section.test form input {
+    width: unset;
+  }
+}
+
+section.test form label {
+  display: block;
+  padding: 0.5em 0;
+}
+
+section.result > div {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  background-color: #0a0a0a;
+  color: #f8f8f8;
+  padding: 0.5em 1em;
+  font-family: "Courier New", Courier, monospace;
+  border-radius: 6px;
+  overflow-x: auto;
+}
+
+section.result p {
+  white-space: pre;
+  margin-bottom: 1em;
+}
+
+button {
+  display: block;
+  border: none;
+  background-color: #d8d8d8;
+  border-radius: 6px;
+  width: 100%;
+  font-family: "Courier New", Courier, monospace;
+  padding: 0.5em 1em;
+}
+
+section.examples p {
+  margin-bottom: 1em;
+}
+
+.example-list {
+  width: 80%;
+  margin: 0 auto 2em;
+  list-style-type: none;
+  padding: 0;
+}
+.example-list li {
+  margin-bottom: 0.5em;
+}
+
+footer {
+  background-color: #f8f8f8;
+  padding: 20px;
+  border-radius: 6px;
 }

@@ -3,11 +3,11 @@ const regexInput = document.getElementById("regex");
 const stringInput = document.getElementById("test-string");
 const testButton = document.getElementById("test-button");
 const testOutput = document.getElementById("test-output");
+const testInput = document.getElementById("test-input");
 
 let start,
   interval,
   calculating = false,
-  stopButton = createButton(),
   worker = createRegexWorker();
 
 turnExamplesIntoButtons();
@@ -24,39 +24,44 @@ form.addEventListener("submit", (event) => {
   }
 });
 
+regexInput.addEventListener("keyup", updateInput);
+stringInput.addEventListener("keyup", updateInput);
+updateInput();
+
 function createRegexWorker() {
   const worker = new Worker("/static/regexWorker.js");
   worker.addEventListener("message", successfulMatch);
   worker.addEventListener("error", unsuccessfulMatch);
   return worker;
 }
-function createButton(text = "Stop") {
+
+function createButton(text) {
   const button = document.createElement("button");
   button.textContent = text;
   return button;
 }
+
 function updateTimer() {
-  testOutput.innerText = `${Math.round(performance.now() - start)}ms`;
+  testOutput.innerText = `>> ${Math.round(performance.now() - start)}ms`;
 }
 
-function terminateWorker() {
+function terminateWorker(event) {
+  event.preventDefault();
   clearInterval(interval);
   calculating = false;
   worker.terminate();
-  stopButton.remove();
-  testOutput.innerText = `The test was terminated without result after ${Math.round(
+  resetTestButton();
+  testOutput.innerText = `>> The test was terminated without result after ${Math.round(
     performance.now() - start
   )}ms`;
-  stopButton = createButton();
   worker = createRegexWorker();
 }
 
 function successfulMatch(event) {
   clearInterval(interval);
   const result = event.data;
-  stopButton.remove();
-  stopButton = createButton();
-  testOutput.innerText = `The result is ${result} and it was calculated in ${Math.round(
+  resetTestButton();
+  testOutput.innerText = `>> The result is ${result} and it was calculated in ${Math.round(
     performance.now() - start
   )}ms`;
   calculating = false;
@@ -64,17 +69,16 @@ function successfulMatch(event) {
 
 function unsuccessfulMatch(event) {
   clearInterval(interval);
-  stopButton.remove();
-  stopButton = createButton();
-  testOutput.innerText = `The test failed with the message "${
+  resetTestButton();
+  testOutput.innerText = `>> The test failed with the message "${
     event.message
   }", and it took ${Math.round(performance.now() - start)}ms`;
   calculating = false;
 }
 
 function testRegexAgainstString(testRegex, testString) {
-  testButton.insertAdjacentElement("afterend", stopButton);
-  stopButton.addEventListener("click", terminateWorker);
+  testButton.addEventListener("click", terminateWorker);
+  testButton.innerText = "Stop";
   start = performance.now();
   interval = setInterval(updateTimer, 50);
   worker.postMessage({
@@ -103,5 +107,15 @@ function fillFormWithExample(regex, string) {
   return function () {
     regexInput.value = regex;
     stringInput.value = string;
+    updateInput();
   };
+}
+
+function updateInput() {
+  testInput.textContent = `/${regexInput.value}/.test("${stringInput.value}");`;
+}
+
+function resetTestButton() {
+  testButton.removeEventListener("click", terminateWorker);
+  testButton.innerText = "Test";
 }
