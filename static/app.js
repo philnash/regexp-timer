@@ -17,9 +17,11 @@ form.addEventListener("submit", (event) => {
   if (!calculating) {
     calculating = true;
     const testRegex = regexInput.value.trim();
-    const testString = stringInput.value.trim();
+    const testString = stringInput.value;
     if (testRegex && testString) {
       testRegexAgainstString(testRegex, testString);
+    } else {
+      calculating = false;
     }
   }
 });
