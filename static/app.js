@@ -139,6 +139,10 @@ function getExampleFromHash() {
 }
 
 function setExampleInHash(regex, string) {
-  const searchParams = new URLSearchParams({ regex, string });
-  window.location.hash = searchParams.toString();
+  if (regex && string) {
+    const searchParams = new URLSearchParams({ regex, string });
+    window.location.hash = searchParams.toString();
+  } else {
+    window.location.hash = "";
+  }
 }
