@@ -2,6 +2,10 @@
 
 The [Regular expression Denial of Service (ReDoS) attack](https://owasp.org/www-community/attacks/Regular_expression_Denial_of_Service_-_ReDoS) exploits the implementation of a regular expression engine causing them to run in exponential time related to the input size. This tool allows you to test various regular expressions against different input inside your browser to measure the time it takes to test an input against a regular expression in order to illustrate this attack.
 
+## Use the application
+
+The application is available at [https://philnash.github.io/regexp-timer](https://philnash.github.io/regexp-timer).
+
 ## Usage
 
 Clone the repo from GitHub:
