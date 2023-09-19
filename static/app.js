@@ -31,7 +31,7 @@ stringInput.addEventListener("keyup", updateInput);
 updateInput();
 
 function createRegexWorker() {
-  const worker = new Worker("/static/regexWorker.js");
+  const worker = new Worker("./static/regexWorker.js");
   worker.addEventListener("message", successfulMatch);
   worker.addEventListener("error", unsuccessfulMatch);
   return worker;
