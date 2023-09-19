@@ -28,6 +28,7 @@ form.addEventListener("submit", (event) => {
 
 regexInput.addEventListener("keyup", updateInput);
 stringInput.addEventListener("keyup", updateInput);
+getExampleFromHash();
 updateInput();
 
 function createRegexWorker() {
@@ -115,9 +116,29 @@ function fillFormWithExample(regex, string) {
 
 function updateInput() {
   testInput.textContent = `/${regexInput.value}/.test("${stringInput.value}");`;
+  setExampleInHash(regexInput.value, stringInput.value);
 }
 
 function resetTestButton() {
   testButton.removeEventListener("click", terminateWorker);
   testButton.innerText = "Test";
+}
+
+function getExampleFromHash() {
+  const locationHash = window.location.href.split("#")[1];
+  if (locationHash) {
+    const searchParams = new URLSearchParams(locationHash);
+    const regex = searchParams.get("regex");
+    const string = searchParams.get("string");
+    if (regex && string) {
+      regexInput.value = regex;
+      stringInput.value = string;
+      updateInput();
+    }
+  }
+}
+
+function setExampleInHash(regex, string) {
+  const searchParams = new URLSearchParams({ regex, string });
+  window.location.hash = searchParams.toString();
 }
