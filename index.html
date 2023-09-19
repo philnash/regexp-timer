@@ -67,24 +67,65 @@
         <h2>Some basic examples</h2>
         <p>Click the example to load it up for testing.</p>
         <ul class="example-list">
-          <li data-example-string="aaaaaaaaaaaaaaaaaaaaaaaa!">(a+)+b</li>
-          <li data-example-string="aaaaaaaaaaaaaaaaaaaaaaaa!">([a-zA-Z]+)*b</li>
-          <li data-example-string="aaaaaaaaaaaaaaaaaaaaaaaa!">(a|aa)+b</li>
-          <li data-example-string="aaaaaaaaaaaaaaaaaaaaaaaa!">(a|a?)+b</li>
-          <li data-example-string="aaaaaaaaaaaaaaaaaaaaaaaa!">(.*a){12}b</li>
+          <li>
+            <span
+              class="example"
+              data-example-string="aaaaaaaaaaaaaaaaaaaaaaaa!"
+              >(a+)+b</span
+            >
+          </li>
+          <li>
+            <span
+              class="example"
+              data-example-string="aaaaaaaaaaaaaaaaaaaaaaaa!"
+              >([a-zA-Z]+)*b</span
+            >
+          </li>
+          <li>
+            <span
+              class="example"
+              data-example-string="aaaaaaaaaaaaaaaaaaaaaaaa!"
+              >(a|aa)+b</span
+            >
+          </li>
+          <li>
+            <span
+              class="example"
+              data-example-string="aaaaaaaaaaaaaaaaaaaaaaaa!"
+              >(a|a?)+b</span
+            >
+          </li>
+          <li>
+            <span
+              class="example"
+              data-example-string="aaaaaaaaaaaaaaaaaaaaaaaa!"
+              >(.*a){12}b</span
+            >
+          </li>
         </ul>
 
         <h2>Some real life examples</h2>
         <p>Click the example to load it up for testing.</p>
         <ul class="example-list">
-          <li
-            data-example-string="@............................travelersinsurance!"
-          >
-            @(.*?\.)+([a-z]{2,18})$
+          <li>
+            <span
+              class="example"
+              data-example-string="http://a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a"
+              >^(.+\.)*localhost$</span
+            >
+            <p>
+              <a href="https://github.com/node-fetch/node-fetch/pull/1611"
+                >ReDoS in node-fetch</a
+              >
+            </p>
           </li>
-          <li
-            data-example-string="http://a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a.a">
-            ^(.+\.)*localhost$
+          <li>
+            <span
+              class="example"
+              data-example-string="@............................travelersinsurance!"
+              >@(.*?\.)+([a-z]{2,18})$</span
+            >
+            <p>A vulnerable attempt at detecting a valid email address</p>
           </li>
         </ul>
       </section>

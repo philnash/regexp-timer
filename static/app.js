@@ -91,18 +91,17 @@ function testRegexAgainstString(testRegex, testString) {
 }
 
 function turnExamplesIntoButtons() {
-  const listItems = document.querySelectorAll(".example-list li");
-  Array.from(listItems).forEach((listItem) => {
-    const button = createButton(listItem.textContent);
+  const examples = document.querySelectorAll(".example-list li .example");
+  Array.from(examples).forEach((example) => {
+    const button = createButton(example.textContent);
     button.addEventListener(
       "click",
       fillFormWithExample(
-        listItem.textContent.trim(),
-        listItem.dataset["exampleString"].trim()
+        example.textContent.trim(),
+        example.dataset["exampleString"].trim()
       )
     );
-    listItem.innerHTML = "";
-    listItem.appendChild(button);
+    example.replaceWith(button);
   });
 }
 
