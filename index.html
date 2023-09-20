@@ -122,10 +122,26 @@
           <li>
             <span
               class="example"
+              data-example-string='"""""""""""""""""""""""""""""""""""""'
+              >("[^"]*"|[^@])*@([^@]*)</span
+            >
+            <p>
+              <a
+                href="https://blog.superhuman.com/how-to-eliminate-regular-expression-denial-of-service/"
+                >An attempt at matching email addresses by Superhuman</a
+              >
+            </p>
+          </li>
+          <li>
+            <span
+              class="example"
               data-example-string="@............................travelersinsurance!"
               >@(.*?\.)+([a-z]{2,18})$</span
             >
-            <p>A vulnerable attempt at detecting a valid email address</p>
+            <p>
+              A vulnerable attempt at detecting a valid email address after the
+              @
+            </p>
           </li>
         </ul>
       </section>
